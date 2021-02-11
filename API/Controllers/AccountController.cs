@@ -42,7 +42,7 @@ namespace API.Controllers
             Token=_tokenService.CreateToken(user)
         };          
         }
-
+    
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto LoginDto){
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from '../_models/user';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,15 +11,26 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
   //Model object for storing Login form data.
   model:any={
+  };
+  
+ 
 
-  }
-  constructor() { }
+  constructor(public AccountService:AccountService) { }
 
   ngOnInit(): void {
+
+  }
+
+  login(){
+   return this.AccountService.login(this.model).subscribe(response=>{
+     console.log(response);
+ 
+   },error=>console.log(error));
+  }
+  logout(){
+    this.AccountService.logout();
+ 
   }
   
-  login(){
-    console.log(this.model);
-  }
 
 }
